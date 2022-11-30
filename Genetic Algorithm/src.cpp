@@ -28,18 +28,18 @@ void main()
 void genetic_algorithm(vector <vector <int>>& chromosomes)
 {
 	int itearation = 0; // number of iterations 
-	while (fitness(chromosomes[0]) != 8)
+	while (fitness(chromosomes[0]) != 8) // don't stop until find the answer
 	{
 		vector <vector <int>> children;
-		cross_over(chromosomes, children);
-		mutation(children);
-		selection(chromosomes, children);
+		cross_over(chromosomes, children); // cross over
+		mutation(children); // mutation
+		selection(chromosomes, children); // select the best chromosomes and kill the others
 
 		cout << "\nIteration Number => " << ++itearation << '\n';
 		cout << "Best Rank = " << fitness(chromosomes[0]) << '\n';
 		cout << "_______________________________\n";
 	}
-	print_final_chromosome(chromosomes[0]);
+	print_final_chromosome(chromosomes[0]); // pront the final answer
 }
 
 void generate_chromosomes(vector <vector <int>>& chromosomes)
