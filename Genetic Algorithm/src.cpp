@@ -140,34 +140,34 @@ int fitness(const vector <int>& chromosome)
 	return rank;
 }
 
-bool check_status_of_chromosome(int r, int c, const vector <int>& chromosome)
+bool check_status_of_chromosome(int row, int column, const vector <int>& chromosome)
 {
 	// check columns
 	for (int i = 0; i < 8; i++)
 	{
-		if (i != r && chromosome[i] == c)
+		if (i != row && chromosome[i] == column)
 			return false;
 	}
 
 	// check diagonals:
 	// main diagonal
-	for (int i = r + 1, j = c + 1; i < 8 && j < 8; i++, j++)
+	for (int i = row + 1, j = column + 1; i < 8 && j < 8; i++, j++)
 	{
 		if (chromosome[i] == j)
 			return false;
 	}
-	for (int i = r - 1, j = c - 1; i >= 0 && j >= 0; i--, j--)
+	for (int i = row - 1, j = column - 1; i >= 0 && j >= 0; i--, j--)
 	{
 		if (chromosome[i] == j)
 			return false;
 	}
 	// reverse diagonal
-	for (int i = r - 1, j = c + 1; i >= 0 && j < 8; i--, j++)
+	for (int i = row - 1, j = column + 1; i >= 0 && j < 8; i--, j++)
 	{
 		if (chromosome[i] == j)
 			return false;
 	}
-	for (int i = r + 1, j = c - 1; i < 8 && j >= 0; i++, j--)
+	for (int i = row + 1, j = column - 1; i < 8 && j >= 0; i++, j--)
 	{
 		if (chromosome[i] == j)
 			return false;
