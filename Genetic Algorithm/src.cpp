@@ -18,9 +18,9 @@ void print_final_chromosome(const vector <int>& chromosome);
 
 void main()
 {
-	srand(time(NULL)); // To make the rand is not static 
+	srand(time(NULL));
 	vector <vector <int>> chromosomes(NUMBER_OF_CHROMOSOMES, vector <int> (8));
-	generate_chromosomes(chromosomes); // generat the first generation 
+	generate_chromosomes(chromosomes);
 	genetic_algorithm(chromosomes); // start the genetic algorithm
 }
 
@@ -42,6 +42,7 @@ void genetic_algorithm(vector <vector <int>>& chromosomes)
 	print_final_chromosome(chromosomes[0]); // pront the final answer
 }
 
+// To build the first generation 
 void generate_chromosomes(vector <vector <int>>& chromosomes)
 {
 	for (int i = 0; i < NUMBER_OF_CHROMOSOMES; i++)
@@ -49,7 +50,6 @@ void generate_chromosomes(vector <vector <int>>& chromosomes)
 		chromosomes[i] = generate_chromosome();
 	}
 }
-
 vector <int> generate_chromosome()
 {
 	vector <int> chromosome(8);
@@ -60,6 +60,7 @@ vector <int> generate_chromosome()
 	return chromosome;
 }
 
+// To generate new generation from the existed chromosomes
 void cross_over(vector <vector <int>>& chromosomes, vector <vector <int>>& children)
 {
 	vector <vector <int>> result_of_cross_over;
@@ -100,6 +101,7 @@ void cross_over(vector <vector <int>>& chromosomes, vector <vector <int>>& child
 	children = result_of_cross_over;
 }
 
+// To make mutation in the children
 void mutation(vector <vector <int>>& children)
 {
 	for (int i = 0; i < NUMBER_OF_CHROMOSOMES; i++)
@@ -114,6 +116,7 @@ void mutation(vector <vector <int>>& children)
 	}
 }
 
+// To choose the best chromosomes and the nearest ones to the solution
 void selection(vector <vector <int>>& chromosomes, vector <vector <int>>& children)
 {
 	vector <vector <int>> v;
@@ -128,7 +131,7 @@ void selection(vector <vector <int>>& chromosomes, vector <vector <int>>& childr
 		chromosomes[i] = v[i];
 }
 
-
+// To find how much the chromosome is near the solution 
 int fitness(const vector <int>& chromosome)
 {
 	int rank = 0;
